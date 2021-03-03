@@ -33,7 +33,7 @@ function requestUserRepos(username, n, m) {
   //Counter variable for Repo_count(n)
   c = 0;
 
-  //API request limit(20) to 2000 repositories per organisation..Can be increased.
+  //API request limited(20) to 2000 repositories per organisation..Can be increased.
   for (let j = 1; j <= 20; j++) {
     
     // Create new XMLHttpRequest object
@@ -84,7 +84,7 @@ function requestUserRepos(username, n, m) {
 
         // Append each li to the ul
         ul.appendChild(li);
-        // console.log(c);//Enable for debugging.
+        console.log(c);//Enable for debugging.
       }
     };
     // Send the request to the server
