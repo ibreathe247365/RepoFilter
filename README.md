@@ -9,5 +9,5 @@ Finally we attach the received data to the DOM.
 
 ### Please take a look at the prerequisites and credits.
 
-Hosted on:- **Coming soon** <br>
-For now,please clone the repo and open index.html!
+Hosted on:<br>
+https://samirsharma-github.github.io/RepoFilter/
