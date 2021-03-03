@@ -1,0 +1,5 @@
+5.Add Auth Token for more API requests.
+1.Add Borders
+2.Make responsive
+3.Host the pages
+4.Seperate XML onload and append functions.
