@@ -81,11 +81,12 @@ function requestUserRepos(username, n, m) {
                 `;
 
         //Add commitees and commit_count
-        fetchContributers(username,data[i].name,m);
-        console.log(data.items[i]);
+        fetchContributers(username,data.items[i].name,m);
+
+        // console.log(data.items[i]);
         // Append each li to the ul
         ul.appendChild(li);
-        console.log(c);//Enable for debugging.
+        // console.log(c);//Enable for debugging.
       }
     };
     // Send the request to the server
@@ -128,6 +129,9 @@ function fetchContributers(username,repo_name,m){
 
             // Add Bootstrap list item class to each li
             li.classList.add("list-group-item");
+            //Debug
+            console.log(data[i].login);
+            console.log(data[i].contributions);
 
             // Create the html markup for each li
             li.innerHTML = `<div>${data[i].login}<div>${data[i].contributions}</div></div>`
