@@ -77,11 +77,11 @@ function requestUserRepos(username, n, m) {
                     <p><strong>Description:</strong> ${data.items[i].description}</p>
                     <p><strong>Forks:</strong> ${data.items[i].forks}</p>
                     <p><strong>URL:</strong> <a href="${data.items[i].html_url}">${data.items[i].html_url}</a></p>
-                    <ul id="contributors_list">Top-contributors</ul>
+                    <ul id="contributors_list${i}">Top-contributors</ul>
                 `;
 
         //Add commitees and commit_count
-        fetchcontributors(username,data.items[i].name,m);
+        fetchcontributors(username,data.items[i].name,m,i);
 
         // console.log(data.items[i]);
         // Append each li to the ul
@@ -98,7 +98,7 @@ function requestUserRepos(username, n, m) {
   }
 }
 
-function fetchcontributors(username,repo_name,m){
+function fetchcontributors(username,repo_name,m,j){
     
     //Counter variable for Commitee_count(m)
     var d=0;
@@ -123,7 +123,7 @@ function fetchcontributors(username,repo_name,m){
             }
 
             // Get the ul with id of of userRepos
-            let ul = document.getElementById("contributors_list");
+            let ul = document.getElementById(`contributors_list${j}`);
             
             // Create variable that will create li's to be added to ul
             let li = document.createElement("li");
