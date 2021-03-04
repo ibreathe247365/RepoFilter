@@ -112,9 +112,9 @@ function fetchContributers(username,repo_name,m){
     xhr.onload = function () {
 
         // Parse API data into JSON
-        const data = JSON.parse(this.response);
-        console.log(data);//For debugging
-        for (let i in data) {
+        const contributers_data = JSON.parse(this.response);
+        console.log(contributers_data);//For debugging
+        for (let i in contributers_data) {
 
             d=d+1;
             if (d > m) {
@@ -130,11 +130,11 @@ function fetchContributers(username,repo_name,m){
             // Add Bootstrap list item class to each li
             li.classList.add("list-group-item");
             //Debug
-            console.log(data[i].login);
-            console.log(data[i].contributions);
+            console.log(contributers_data[i].login);
+            console.log(contributers_data[i].contributions);
 
             // Create the html markup for each li
-            li.innerHTML = `<div>${data[i].login}<div>${data[i].contributions}</div></div>`
+            li.innerHTML = `<div>${contributers_data[i].login}<div>${contributers_data[i].contributions}</div></div>`
             ul.appendChild(li);
         }
     }
