@@ -8,3 +8,4 @@ https://api.github.com/
 https://stackoverflow.com/questions/19233415/how-to-make-type-number-to-positive-numbers-only/19233458#:~:text=You%20can%20force%20the%20input,onkeypress%20within%20the%20input%20tag.&text=Here%2C%20event.,scrolling%20within%20the%20input%20bar.
 https://docs.github.com/en/rest/reference/search#search-repositories
 https://stackoverflow.com/questions/48874412/github-api-how-to-get-the-top-contributors-sorted-for-a-given-repository
+https://dmitripavlutin.com/access-object-keys-values-entries/

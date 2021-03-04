@@ -1,3 +1,4 @@
 1.Please disable Adblockers if on.
 2.Works best with Firefox
 3.Take care of the API requests limit.(Even VPN cant bypass it :o)
+4.Live server extension recommended for debugging

@@ -31,10 +31,11 @@ gitHubForm.addEventListener("submit", (e) => {
 function requestUserRepos(username, n, m) {
 
   //Counter variable for Repo_count(n)
-  c = 0;
+  var c = 0 ;
 
   //API request limited(20) to 2000 repositories per organisation..Can be increased.
   for (let j = 1; j <= 20; j++) {
+    
     
     // Create new XMLHttpRequest object
     xhr = new XMLHttpRequest();
@@ -51,12 +52,12 @@ function requestUserRepos(username, n, m) {
     xhr.onload = function () {
 
       // Parse API data into JSON
-      const data = JSON.parse(this.response);
+      data = JSON.parse(this.response);
 
       // Loop over each object in data array
-      for (let i in data) {
+      for (let i in data.items) {
         
-        c++;
+        c=c+1;
         if (c > n) {
           break;
         }
@@ -72,16 +73,16 @@ function requestUserRepos(username, n, m) {
         
         // Create the html markup for each li
         li.innerHTML = `
-                    <p><strong>Repo:</strong> ${data[i].name}</p>
-                    <p><strong>Description:</strong> ${data[i].description}</p>
-                    <p><strong>Forks:</strong> ${data[i].forks}</p>
-                    <p><strong>URL:</strong> <a href="${data[i].html_url}">${data[i].html_url}</a></p>
+                    <p><strong>Repo:</strong> ${data.items[i].name}</p>
+                    <p><strong>Description:</strong> ${data.items[i].description}</p>
+                    <p><strong>Forks:</strong> ${data.items[i].forks}</p>
+                    <p><strong>URL:</strong> <a href="${data.items[i].html_url}">${data.items[i].html_url}</a></p>
                     <ul id="contributers_list">Top-Contributers</ul>
                 `;
 
         //Add commitees and commit_count
-        fetchContributers(username,data[i].name,m)
-
+        fetchContributers(username,data[i].name,m);
+        console.log(data.items[i]);
         // Append each li to the ul
         ul.appendChild(li);
         console.log(c);//Enable for debugging.
@@ -89,16 +90,21 @@ function requestUserRepos(username, n, m) {
     };
     // Send the request to the server
     xhr.send();
+
+    if (j*100 >= n){//reduce no.of API calls
+      return;
+    }
   }
 }
 
 function fetchContributers(username,repo_name,m){
     //Counter variable for Commitee_count(m)
-    c=0;
+    var d=0;
 
     //New XML Request Object
     xhr = new XMLHttpRequest();
     //Endpoint(Auto-sorted by the API,yay!)
+    //Limited to 100 contributers.
     url=`https://api.github.com/repos/${username}/${repo_name}/contributers?per_page=100`
 
     xhr.open("GET", url, true);
@@ -106,10 +112,11 @@ function fetchContributers(username,repo_name,m){
 
         // Parse API data into JSON
         const data = JSON.parse(this.response);
+        console.log(data);//For debugging
         for (let i in data) {
 
-            c++;
-            if (c > m) {
+            d=d+1;
+            if (d > m) {
             break;
             }
 
